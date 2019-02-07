@@ -52,7 +52,7 @@ public class Game
         String output = "";
 
         output += name;
-        output += getSpaces(30 - name.length());
+        output += getSpaces(25 - name.length());
 
         output += developer + getSpaces(25 - developer.length());
 
@@ -61,7 +61,6 @@ public class Game
         output += rating + getSpaces(7);
 
         output += mode;
-        output += getSpaces(18 - mode.length());
 
         return output;
     }

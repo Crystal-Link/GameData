@@ -13,15 +13,7 @@ public class GameInfo
         {
             Scanner input = new Scanner(inputFile);
 
-            int lineCount = 0;
-            while (input.hasNextLine())
-            {
-                input.nextLine();
-                lineCount++;
-            }
             GameTable pt = new GameTable();
-
-            input.close();
             input = new Scanner(inputFile);
 
             String currentLine;
@@ -30,8 +22,7 @@ public class GameInfo
             String name, developer, genre, mode;
             int year;
             double rating;
-
-            lineCount = 0;
+            input.nextLine();
             while(input.hasNextLine())
             {
                 currentLine = input.nextLine();
@@ -44,8 +35,7 @@ public class GameInfo
                 mode = gameData[5];
 
                 g = new Game(name, developer, genre, year, rating, mode);
-                pt.addGame(lineCount, g);
-                lineCount++;
+                pt.addGame(g);
             }
 
             input.close();
@@ -53,7 +43,37 @@ public class GameInfo
             System.out.println(pt);
             System.out.println();
 
+            pt.sortGameByName();
+            System.out.println(pt);
+
+            pt.sortGameByYear();
+            System.out.println(pt);
+
             System.out.println(pt.getGame("Osu!"));
+            System.out.println();
+
+            System.out.println(pt.getDeveloper("Blizzard Entertainment"));
+            System.out.println();
+
+            System.out.println(pt.getYear(2016));
+            System.out.println();
+
+            System.out.println(pt.getMode("Multiplayer"));
+            System.out.println();
+
+            System.out.println(pt.getRating(0.9));
+            System.out.println();
+
+            System.out.println("The average year of all listed games is " + pt.getAvgYear());
+            System.out.println();
+
+            System.out.println("The average rating of all listed games is " + pt.getAvgRating() + " out of 1.0");
+            System.out.println();
+
+            System.out.println("The average rating of all listed 2015 games is " + pt.getAvgRating(2015) + " out of 1.0");
+            System.out.println();
+
+            System.out.println("The average rating of all listed Single-Player games is " + pt.getAvgRating("Single-Player") + " out of 1.0");
             System.out.println();
         }
     }
