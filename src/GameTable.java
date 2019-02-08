@@ -16,14 +16,35 @@ public class GameTable
         table.add(g);
     }
 
+    public void sortGameBy(String option)
+    {
+        if (option.equalsIgnoreCase("name"))
+            sortGameByName();
+        else if (option.equalsIgnoreCase("year"))
+            sortGameByYear();
+        else if (option.equalsIgnoreCase("rating"))
+            sortGameByRating();
+        else if (option.equalsIgnoreCase("genre"))
+            sortGameByGenre();
+        else if (option.equalsIgnoreCase("mode"))
+            sortGameByMode();
+        else if (option.equalsIgnoreCase("developer") || option.equalsIgnoreCase("dev"))
+            sortGameByDeveloper();
+    }
+
     public void sortGameByYear()
     {
         for (int i = 0; i < table.size() - 1; i++) {
             int lowPosition = i;
             for (int h = i + 1; h < table.size(); h++)
             {
-                if (table.get(h).getYear() < (table.get(lowPosition).getYear()))
+                if (Game.compareToByYear(table.get(h), table.get(lowPosition)) == -1)
                     lowPosition = h;
+                else if (table.get(h).getYear() == table.get(lowPosition).getYear())
+                {
+                    if (Game.compareToByName(table.get(h), table.get(lowPosition)) == -1)
+                        lowPosition = h;
+                }
             }
             table.set(i, table.set(lowPosition, table.get(i)));
         }
@@ -35,8 +56,80 @@ public class GameTable
             int lowPosition = i;
             for (int h = i + 1; h < table.size(); h++)
             {
-                if (table.get(h).getName().compareToIgnoreCase(table.get(lowPosition).getName()) < 0)
+                if (Game.compareToByName(table.get(h), table.get(lowPosition)) == -1)
                     lowPosition = h;
+            }
+            table.set(i, table.set(lowPosition, table.get(i)));
+        }
+    }
+
+    public void sortGameByDeveloper()
+    {
+        for (int i = 0; i < table.size() - 1; i++) {
+            int lowPosition = i;
+            for (int h = i + 1; h < table.size(); h++)
+            {
+                if (Game.compareToByDeveloper(table.get(h), table.get(lowPosition)) == -1)
+                    lowPosition = h;
+                else if (table.get(h).getDeveloper().equalsIgnoreCase(table.get(lowPosition).getDeveloper()))
+                {
+                    if (Game.compareToByName(table.get(h), table.get(lowPosition)) == -1)
+                        lowPosition = h;
+                }
+            }
+            table.set(i, table.set(lowPosition, table.get(i)));
+        }
+    }
+
+    public void sortGameByGenre()
+    {
+        for (int i = 0; i < table.size() - 1; i++) {
+            int lowPosition = i;
+            for (int h = i + 1; h < table.size(); h++)
+            {
+                if (Game.compareToByGenre(table.get(h), table.get(lowPosition)) == -1)
+                    lowPosition = h;
+                else if (table.get(h).getGenre().equalsIgnoreCase(table.get(lowPosition).getGenre()))
+                {
+                    if (Game.compareToByName(table.get(h), table.get(lowPosition)) == -1)
+                        lowPosition = h;
+                }
+            }
+            table.set(i, table.set(lowPosition, table.get(i)));
+        }
+    }
+
+    public void sortGameByMode()
+    {
+        for (int i = 0; i < table.size() - 1; i++) {
+            int lowPosition = i;
+            for (int h = i + 1; h < table.size(); h++)
+            {
+                if (Game.compareToByMode(table.get(h), table.get(lowPosition)) == -1)
+                    lowPosition = h;
+                else if (table.get(h).getMode().equalsIgnoreCase(table.get(lowPosition).getMode()))
+                {
+                    if (Game.compareToByName(table.get(h), table.get(lowPosition)) == -1)
+                        lowPosition = h;
+                }
+            }
+            table.set(i, table.set(lowPosition, table.get(i)));
+        }
+    }
+
+    public void sortGameByRating()
+    {
+        for (int i = 0; i < table.size() - 1; i++) {
+            int lowPosition = i;
+            for (int h = i + 1; h < table.size(); h++)
+            {
+                if (Game.compareToByRating(table.get(h), table.get(lowPosition)) == -1)
+                    lowPosition = h;
+                else if (table.get(h).getRating() == table.get(lowPosition).getRating())
+                {
+                    if (Game.compareToByName(table.get(h), table.get(lowPosition)) == -1)
+                        lowPosition = h;
+                }
             }
             table.set(i, table.set(lowPosition, table.get(i)));
         }

@@ -40,27 +40,51 @@ public class GameInfo
 
             input.close();
 
+            System.out.println("ORIGINAL GAME TABLE");
             System.out.println(pt);
             System.out.println();
 
+            System.out.println("SORTED BY NAME");
             pt.sortGameByName();
             System.out.println(pt);
 
+            System.out.println("SORTED BY YEAR");
             pt.sortGameByYear();
             System.out.println(pt);
 
+            System.out.println("SORTED BY DEVELOPER");
+            pt.sortGameByDeveloper();
+            System.out.println(pt);
+
+            System.out.println("SORTED BY RATING");
+            pt.sortGameBy("Rating");
+            System.out.println(pt);
+
+            System.out.println("SORTED BY GENRE");
+            pt.sortGameByGenre();
+            System.out.println(pt);
+
+            System.out.println("Sorted by Mode");
+            pt.sortGameByMode();
+            System.out.println(pt);
+
+            System.out.println("GET Osu!");
             System.out.println(pt.getGame("Osu!"));
             System.out.println();
 
+            System.out.println("ALL GAMES FROM Blizzard Entertainment");
             System.out.println(pt.getDeveloper("Blizzard Entertainment"));
             System.out.println();
 
+            System.out.println("All games in year 2016");
             System.out.println(pt.getYear(2016));
             System.out.println();
 
+            System.out.println("ALL MULTIPLAYER GAMES");
             System.out.println(pt.getMode("Multiplayer"));
             System.out.println();
 
+            System.out.println("ALL GAMES WITH 0.9 RATING");
             System.out.println(pt.getRating(0.9));
             System.out.println();
 

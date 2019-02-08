@@ -27,24 +27,105 @@ public class Game
     public double getRating() {return rating;}
     public String getMode() {return mode;}
 
-    public int compareToByRating(Game game)
+
+    public static int compareToByName(Game game1, Game game2)
     {
-        if (game.getRating() > this.rating)
+        if (game1.name.compareToIgnoreCase(game2.name) < 0)
+            return -1;
+        else if (game1.name.compareToIgnoreCase(game2.name) > 0)
             return 1;
-        else if (game.getRating() < this.rating)
+        else
+            return 0;
+    }
+
+    public static int compareToByRating(Game game1, Game game2)
+    {
+        if (game1.rating > game2.rating)
+            return 1;
+        else if (game1.rating < game2.rating)
             return -1;
         else
             return 0;
     }
 
-    public int compareToByYear(Game game)
+    public static int compareToByYear(Game game1, Game game2)
     {
-        if (game.getYear() > this.year)
+        if (game1.year > game2.year)
             return 1;
-        else if (game.getYear() < this.year)
+        else if (game1.year < game2.year)
             return -1;
         else
             return 0;
+    }
+
+    public static int compareToByGenre(Game game1, Game game2)
+    {
+        if (game1.genre.compareToIgnoreCase(game2.genre) > 0)
+            return 1;
+        else if (game1.genre.compareToIgnoreCase(game2.genre) < 0)
+            return -1;
+        else
+            return 0;
+    }
+
+    public static int compareToByMode(Game game1, Game game2)
+    {
+        if (game1.mode.compareToIgnoreCase(game2.mode) > 0)
+            return 1;
+        else if (game1.mode.compareToIgnoreCase(game2.mode) < 0)
+            return -1;
+        else
+            return 0;
+    }
+
+    public static int compareToByDeveloper(Game game1, Game game2)
+    {
+        if (game1.developer.compareToIgnoreCase(game2.developer) > 0)
+            return 1;
+        else if (game1.developer.compareToIgnoreCase(game2.developer) < 0)
+            return -1;
+        else
+            return 0;
+    }
+
+    public static boolean equalsYear(Game game1, Game game2)
+    {
+        if (compareToByYear(game1, game2) == 0)
+            return true;
+        else
+            return false;
+    }
+
+    public static boolean equalsRating(Game game1, Game game2)
+    {
+        if (compareToByRating(game1, game2) == 0)
+            return true;
+        else
+            return false;
+    }
+
+    public static boolean equalsMode(Game game1, Game game2)
+    {
+        if (compareToByMode(game1, game2) == 0)
+            return true;
+        else
+            return false;
+    }
+
+    public static boolean equalsGenre(Game game1, Game game2)
+    {
+        if (compareToByGenre(game1, game2) == 0)
+            return true;
+        else
+            return false;
+    }
+
+    public static boolean equalsDeveloper(Game game1, Game game2)
+    {
+        if (compareToByDeveloper(game1, game2) == 0)
+            return true;
+        else
+            return false;
     }
 
     public String toString()
@@ -55,6 +136,8 @@ public class Game
         output += getSpaces(25 - name.length());
 
         output += developer + getSpaces(25 - developer.length());
+
+        output += genre + getSpaces(23 - genre.length());
 
         output += year + getSpaces(7);
 
